@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #ff4d00;
+  --color-primary-hover: #e64500;
+  --color-secondary: #ffb800;
+}
+
+:root {
+  font-family: 'Hind Siliguri', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  background-color: #0f172a;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Custom glass effect if needed beyond Tailwind */
+.glass-effect {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+}
+
+/* Explicitly non-Tailwind styles for html2canvas compatibility */
+.coupon-card-container {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.coupon-red-bg {
+  background-color: #ff4d00;
+}
+
+.coupon-yellow-text {
+  color: #ffb800;
+}
+
+.coupon-gray-text {
+  color: #94a3b8;
+}
+
+.coupon-border-red {
+  border-color: rgba(255, 77, 0, 0.3);
+}
+
+.coupon-gradient-main {
+  background: linear-gradient(to bottom right, #111111, #000000);
+}
+
+.coupon-gradient-text {
+  background: linear-gradient(to right, #ff4d00, #ffb800, #ff4d00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
