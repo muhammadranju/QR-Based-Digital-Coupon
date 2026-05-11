@@ -82,30 +82,60 @@ const CouponCard: React.FC<CouponCardProps> = ({
   const qrUrl = new URL(window.location.href);
   qrUrl.searchParams.set("download", "true");
 
+  const [scale, setScale] = React.useState(1);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth;
+        const cardWidth = 600; // Original width
+        if (containerWidth < cardWidth) {
+          setScale(containerWidth / cardWidth);
+        } else {
+          setScale(1);
+        }
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
-    <div className="flex flex-col items-center gap-10 w-full max-w-4xl px-4 py-10">
+    <div className="flex flex-col items-center gap-10 w-full max-w-4xl px-4 py-6 md:py-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="w-full flex flex-col items-center"
       >
-        {/* THE REALISTIC COUPON CARD */}
-        <div
-          ref={couponRef}
-          style={{
-            width: "600px", // Fixed width for consistent high-quality export
-            height: "320px", // Compact horizontal card aspect
-            backgroundColor: "#000000",
-            color: "#ffffff",
-            position: "relative",
-            borderRadius: "24px",
-            overflow: "hidden",
-            display: "flex",
-            boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
-            border: "1px solid rgba(255, 77, 0, 0.2)",
-          }}
+        {/* RESPONSIVE WRAPPER */}
+        <div 
+          ref={containerRef}
+          className="w-full flex justify-center overflow-visible"
+          style={{ height: `${320 * scale}px`, minHeight: '160px' }}
         >
+          {/* THE REALISTIC COUPON CARD */}
+          <div
+            ref={couponRef}
+            style={{
+              width: "600px",
+              height: "320px",
+              backgroundColor: "#000000",
+              color: "#ffffff",
+              position: "relative",
+              borderRadius: "24px",
+              overflow: "hidden",
+              display: "flex",
+              boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+              border: "1px solid rgba(255, 77, 0, 0.2)",
+              transform: `scale(${scale})`,
+              transformOrigin: 'top center',
+              flexShrink: 0,
+            }}
+          >
           {/* Left Section (Main Offer) */}
           <div
             style={{
@@ -470,6 +500,7 @@ const CouponCard: React.FC<CouponCardProps> = ({
             />
           </div>
         </div>
+      </div>
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-6 mt-12 w-full justify-center">
