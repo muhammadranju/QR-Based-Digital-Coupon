@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { Download, Star, Info, ShieldCheck, Flame } from "lucide-react";
+import { Download, Info, ShieldCheck, Flame } from "lucide-react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { QRCodeSVG } from "qrcode.react";

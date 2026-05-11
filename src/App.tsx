@@ -1,4 +1,3 @@
-import React from 'react';
 import CouponCard from './components/CouponCard';
 import type { MomoProduct } from './components/CouponCard';
 import { motion } from 'framer-motion';
