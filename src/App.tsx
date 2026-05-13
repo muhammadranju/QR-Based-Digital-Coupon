@@ -19,7 +19,7 @@ function App() {
         name: "ফ্রাইড মমো",
         quantity: "৬ পিস প্লেট",
         normalPrice: "১০০",
-        loyalPrice: "৮০",
+        loyalPrice: "৯০",
       },
     ] as MomoProduct[],
   };
