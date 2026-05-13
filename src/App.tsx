@@ -12,14 +12,14 @@ function App() {
       {
         name: "স্টিম মমো",
         quantity: "৬ পিস প্লেট",
-        normalPrice: 80,
-        loyalPrice: 60,
+        normalPrice: "৮০",
+        loyalPrice: "৭০",
       },
       {
         name: "ফ্রাইড মমো",
         quantity: "৬ পিস প্লেট",
-        normalPrice: 100,
-        loyalPrice: 80,
+        normalPrice: "১০০",
+        loyalPrice: "৮০",
       },
     ] as MomoProduct[],
   };
